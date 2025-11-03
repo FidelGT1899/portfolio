@@ -32,25 +32,46 @@
     "experience": {
         "title": "Experiencia",
         "first": {
-            "title": "Asistente Administrativo",
-            "date": "Enero 2021 - Enero 2023",
-            "descriptionOne": "Creé un sistema de inventario de TI, reduciendo el tiempo de gestión en un 30%.",
-            "descriptionTwo": "Optimicé el sitio web de la institución para una mejor accesibilidad.",
-            "descriptionThree": "Brindé soporte técnico, asegurando la continuidad de los sistemas de TI."
+            "title": "Software Developer Full Stack – Proyecto Especial Chira Piura",
+            "date": "Enero 2021 – Enero 2023",
+            "descriptionOne": "Diseñé un sistema de inventario con arquitectura limpia y desarrollo orientado a pruebas (TDD) usando Laravel y Spring Boot.",
+            "descriptionTwo": "Implementé autenticación y autorización seguras con OAuth2, cumpliendo estándares de desarrollo seguro.",
+            "descriptionThree": "Colaboré en la migración de sistemas monolíticos hacia microservicios, mejorando la mantenibilidad del código."
         },
         "second": {
-            "title": "Soporte de Oficina - Desarrollador FullStack",
-            "date": "Agosto 2023 - Abril 2024",
-            "descriptionOne": "Diseñé sistemas web para áreas de la empresa utilizando Laravel y Vue.js.",
-            "descriptionTwo": "Desarrollé un sistema para gestionar la producción agrícola y las cosechas.",
-            "descriptionThree": "Mejoré el mantenimiento y la logística de la maquinaria agrícola."
+            "title": "Software Developer Full Stack – Ecosac",
+            "date": "Agosto 2023 – Abril 2024",
+            "descriptionOne": "Desarrollé sistemas web para gestión agrícola y administrativa con Laravel, Vue.js, MySQL y MSSQL.",
+            "descriptionTwo": "Integré Spring Boot con SAP (Service Layer, DiApi) mediante APIs RESTful para procesos logísticos.",
+            "descriptionThree": "Implementé caché con Redis, mejorando el rendimiento de planificaciones críticas en más de un 40%."
         },
-        "third":{
-            "title": "Desarrollador FullStack",
-            "date": "Julio 2024 - Noviembre 2024",
-            "descriptionOne": "Desarrollé interfaces basadas en diseños de Figma utilizando Laravel, Inertia.js y Vue.js.",
-            "descriptionTwo": "Implementé lógica backend y me conecté a bases de datos MySQL.",
-            "descriptionThree": "Presenté el progreso a los clientes y ajusté las soluciones basándome en los comentarios."
+        "third": {
+            "title": "Software Developer Full Stack – YarosLab",
+            "date": "Julio 2024 – Noviembre 2024",
+            "descriptionOne": "Desarrollé un proyecto turístico full stack con Laravel, Inertia.js y Vue.js, logrando +5000 visitas mensuales.",
+            "descriptionTwo": "Diseñé microservicios con Spring Boot y Kafka para procesamiento de eventos del sector turístico.",
+            "descriptionThree": "Optimicé el rendimiento y aseguré la calidad del código con SonarLint/SonarQube y pipelines CI/CD."
+        },
+        "fourth": {
+            "title": "Software Developer Full Stack – Universidad Nacional de Frontera",
+            "date": "Diciembre 2024 – Marzo 2025",
+            "descriptionOne": "Desarrollé microservicios con Spring Boot y Java 8/11/17 aplicando DDD y arquitectura hexagonal.",
+            "descriptionTwo": "Integré sistemas académicos y financieros con PostgreSQL y MSSQL, reduciendo tiempos de respuesta a <200ms.",
+            "descriptionThree": "Refactoricé sistemas .NET 6 bajo Clean Architecture, reduciendo un 60% los tiempos de inactividad."
+        },
+        "fifth": {
+            "title": "Software Backend Developer – Invian International",
+            "date": "Abril 2025 – Julio 2025",
+            "descriptionOne": ".",
+            "descriptionTwo": ".",
+            "descriptionThree": "."
+        },
+        "sixth":{
+            "title": "Software Engineer II – Encora (Cliente Scotiabank)",
+            "date": "Agosto 2025 - Actualidad",
+            "descriptionOne": "Desarrollo de microservicios financieros con Spring Boot y WebFlux, aplicando patrones de resiliencia.",
+            "descriptionTwo": "Implementación de CI/CD con GitHub Actions y monitoreo con SonarQube y Prometheus.",
+            "descriptionThree": "Participación en revisiones de código y auditorías de seguridad bajo estándares de banca digital."
         }
     },
     "skills": {
