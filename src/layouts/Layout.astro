@@ -114,4 +114,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 	.slide-track-others {
 		width: calc(200px * 9 * 2);
 	}
+
+	.scrollbar-hide::-webkit-scrollbar {
+		display: none;
+	}
+
+	.scrollbar-hide {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
 </style>
