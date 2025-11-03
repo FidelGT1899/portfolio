@@ -32,42 +32,48 @@
     "experience": {
         "title": "Experiencia",
         "first": {
-            "title": "Software Developer Full Stack – Proyecto Especial Chira Piura",
+            "title": "Software Developer Full Stack",
+            "jobName": "Proyecto Especial Chira Piura",
             "date": "Enero 2021 – Enero 2023",
             "descriptionOne": "Diseñé un sistema de inventario con arquitectura limpia y desarrollo orientado a pruebas (TDD) usando Laravel y Spring Boot.",
             "descriptionTwo": "Implementé autenticación y autorización seguras con OAuth2, cumpliendo estándares de desarrollo seguro.",
             "descriptionThree": "Colaboré en la migración de sistemas monolíticos hacia microservicios, mejorando la mantenibilidad del código."
         },
         "second": {
-            "title": "Software Developer Full Stack – Ecosac",
+            "title": "Software Developer Full Stack",
+            "jobName": "Ecosac",
             "date": "Agosto 2023 – Abril 2024",
             "descriptionOne": "Desarrollé sistemas web para gestión agrícola y administrativa con Laravel, Vue.js, MySQL y MSSQL.",
             "descriptionTwo": "Integré Spring Boot con SAP (Service Layer, DiApi) mediante APIs RESTful para procesos logísticos.",
             "descriptionThree": "Implementé caché con Redis, mejorando el rendimiento de planificaciones críticas en más de un 40%."
         },
         "third": {
-            "title": "Software Developer Full Stack – YarosLab",
+            "title": "Software Developer Full Stack",
+            "jobName": "YarosLab",
             "date": "Julio 2024 – Noviembre 2024",
             "descriptionOne": "Desarrollé un proyecto turístico full stack con Laravel, Inertia.js y Vue.js, logrando +5000 visitas mensuales.",
             "descriptionTwo": "Diseñé microservicios con Spring Boot y Kafka para procesamiento de eventos del sector turístico.",
             "descriptionThree": "Optimicé el rendimiento y aseguré la calidad del código con SonarLint/SonarQube y pipelines CI/CD."
         },
         "fourth": {
-            "title": "Software Developer Full Stack – Universidad Nacional de Frontera",
+            "title": "Software Developer Full Stack",
+            "jobName": "Universidad Nacional de Frontera",
             "date": "Diciembre 2024 – Marzo 2025",
             "descriptionOne": "Desarrollé microservicios con Spring Boot y Java 8/11/17 aplicando DDD y arquitectura hexagonal.",
             "descriptionTwo": "Integré sistemas académicos y financieros con PostgreSQL y MSSQL, reduciendo tiempos de respuesta a <200ms.",
             "descriptionThree": "Refactoricé sistemas .NET 6 bajo Clean Architecture, reduciendo un 60% los tiempos de inactividad."
         },
         "fifth": {
-            "title": "Software Backend Developer – Invian International",
+            "title": "Software Backend Developer",
+            "jobName": "Invian International",
             "date": "Abril 2025 – Julio 2025",
-            "descriptionOne": ".",
-            "descriptionTwo": ".",
-            "descriptionThree": "."
+            "descriptionOne": "Desarrollé y mantuve microservicios backend con Laravel y PostgreSQL, empleando estructuras modulares basadas en paquetes y repositorios independientes.",
+            "descriptionTwo": "Implementé consultas SQL optimizadas y control de versiones con Git Flow, asegurando la estabilidad del entorno mediante Docker y despliegues multiambiente.",
+            "descriptionThree": "Colaboré en la integración de servicios en Java con Spring Boot, Gradle y WebFlux, fortaleciendo la interoperabilidad y el rendimiento del ecosistema backend."
         },
         "sixth":{
-            "title": "Software Engineer II – Encora (Cliente Scotiabank)",
+            "title": "Software Engineer II",
+            "jobName": "Encora (Cliente Scotiabank)",
             "date": "Agosto 2025 - Actualidad",
             "descriptionOne": "Desarrollo de microservicios financieros con Spring Boot y WebFlux, aplicando patrones de resiliencia.",
             "descriptionTwo": "Implementación de CI/CD con GitHub Actions y monitoreo con SonarQube y Prometheus.",

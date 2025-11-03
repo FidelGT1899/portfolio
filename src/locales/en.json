@@ -32,25 +32,52 @@
     "experience": {
         "title": "Experience",
         "first": {
-            "title": "Administrative Assistant",
-            "date": "January 2021 - January 2023",
-            "descriptionOne": "Created an IT inventory system, reducing management time by 30%.",
-            "descriptionTwo": "Optimized the institution's website for better accessibility.",
-            "descriptionThree": "Provided technical support, ensuring continuity of IT systems."
+            "title": "Software Developer Full Stack",
+            "jobName": "Proyecto Especial Chira Piura",
+            "date": "January 2021 – January 2023",
+            "descriptionOne": "Designed an inventory system using clean architecture and test-driven development (TDD) with Laravel and Spring Boot.",
+            "descriptionTwo": "Implemented secure authentication and authorization with OAuth2, complying with secure coding standards.",
+            "descriptionThree": "Collaborated on migrating monolithic systems to microservices, improving code maintainability."
         },
         "second": {
-            "title": "Office Support- Developer FullStack",
-            "date": "August 2023 - April 2024",
-            "descriptionOne": "Designed web systems for company areas using Laravel and Vue.js.",
-            "descriptionTwo": "Developed a system to manage agricultural production and harvests.",
-            "descriptionThree": "Improved maintenance and logistics for agricultural machinery."
+            "title": "Software Developer Full Stack",
+            "jobName": "Ecosac",
+            "date": "August 2023 – April 2024",
+            "descriptionOne": "Developed web systems for agricultural and administrative management using Laravel, Vue.js, MySQL, and MSSQL.",
+            "descriptionTwo": "Integrated Spring Boot with SAP (Service Layer, DiApi) through RESTful APIs for logistics processes.",
+            "descriptionThree": "Implemented Redis caching, improving performance of critical planning operations by over 40%."
         },
-        "third":{
-            "title": "July 2024 - November 2024",
-            "date": "Developer FullStack",
-            "descriptionOne": "Developed interfaces based on Figma designs using Laravel, Inertia.js, and Vue.js.",
-            "descriptionTwo": "Implemented backend logic and connected to MySQL databases.",
-            "descriptionThree": "Presented progress to clients and adjusted solutions based on feedback."
+        "third": {
+            "title": "Software Developer Full Stack",
+            "jobName": "YarosLab",
+            "date": "July 2024 – November 2024",
+            "descriptionOne": "Developed a full-stack tourism project using Laravel, Inertia.js, and Vue.js, reaching over 5,000 monthly visits.",
+            "descriptionTwo": "Designed microservices with Spring Boot and Kafka for event-driven processing in the tourism sector.",
+            "descriptionThree": "Optimized performance and ensured code quality with SonarLint/SonarQube and CI/CD pipelines."
+        },
+        "fourth": {
+            "title": "Software Developer Full Stack",
+            "jobName": "Universidad Nacional de Frontera",
+            "date": "December 2024 – March 2025",
+            "descriptionOne": "Developed microservices with Spring Boot and Java 8/11/17 applying DDD and hexagonal architecture.",
+            "descriptionTwo": "Integrated academic and financial systems with PostgreSQL and MSSQL, reducing response times to under 200ms.",
+            "descriptionThree": "Refactored .NET 6 systems under Clean Architecture, reducing downtime by 60%."
+        },
+        "fifth": {
+            "title": "Software Backend Developer",
+            "jobName": "Invian International",
+            "date": "April 2025 – July 2025",
+            "descriptionOne": "Developed and maintained backend microservices using Laravel and PostgreSQL, applying modular architectures based on packages and independent repositories.",
+            "descriptionTwo": "Implemented optimized SQL queries and version control through Git Flow, ensuring system stability with Docker and multi-environment deployments.",
+            "descriptionThree": "Collaborated in the integration of services using Java with Spring Boot, Gradle, and WebFlux, enhancing interoperability and backend performance."
+        },
+        "sixth": {
+            "title": "Software Engineer II",
+            "jobName": "Encora (Client: Scotiabank)",
+            "date": "August 2025 – Present",
+            "descriptionOne": "Developing financial microservices with Spring Boot and WebFlux, applying resilience patterns.",
+            "descriptionTwo": "Implementing CI/CD with GitHub Actions and monitoring with SonarQube and Prometheus.",
+            "descriptionThree": "Participating in code reviews and security audits under digital banking standards."
         }
     },
     "skills": {
