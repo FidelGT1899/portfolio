@@ -25,7 +25,7 @@
     },
     "banner": {
         "title": "Edwin Fidel García Távara",
-        "subtitle": "+2 años de experiencia. Desarrollador Web enfocado en el backend de Piura, Perú",
+        "subtitle": "{{years}} años de experiencia. Desarrollador Web enfocado en el backend de Piura, Perú",
         "projects": "Proyectos",
         "linkedin": "LinkedIn"
     },

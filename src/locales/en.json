@@ -25,7 +25,7 @@
     },
     "banner": {
         "title": "Edwin Fidel García Távara",
-        "subtitle": "+2 years of experience. Backend focused Web Developer from Piura, Peru",
+        "subtitle": "{{years}} years of experience. Backend focused Web Developer from Piura, Peru",
         "projects": "Projects",
         "linkedin": "LinkedIn"
     },
