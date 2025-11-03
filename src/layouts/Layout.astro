@@ -89,6 +89,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		position: relative;
 		overflow: hidden;
 		width: 75vw;
+		mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+		-webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 	}
 
 	.slide-track {

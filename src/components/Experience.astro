@@ -8,37 +8,51 @@ const { locale, translations } = await getLocale(Astro);
         <h2 class="text-4xl font-extrabold leading-tight pb-3 tracking-tight text-white md:text-5xl sm:text-4xl xl:text-6xl dark:text-white">
             {translations.experience.title}
         </h2>
-        <ol class="relative border-s border-gray-200 dark:border-gray-700">
-            <li class="mb-10 ms-4">
-                <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-400"></div>
-                <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{translations.experience.third.date}</time>
-                <h3 class="text-lg font-semibold text-white dark:text-white">{translations.experience.third.title}</h3>
-                <ul class="list-disc pl-5 text-base font-normal text-gray-500 dark:text-gray-400 md:text-lg lg:text-xl">
-                    <li>{translations.experience.third.descriptionOne}</li>
-                    <li>{translations.experience.third.descriptionTwo}</li>
-                    <li>{translations.experience.third.descriptionThree}</li>
-                </ul>
-            </li>
-            <li class="mb-10 ms-4">
-                <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-400"></div>
-                <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{translations.experience.second.date}</time>
-                <h3 class="text-lg font-semibold text-white dark:text-white">{translations.experience.second.title}</h3>
-                <ul class="list-disc pl-5 text-base font-normal text-gray-500 dark:text-gray-400 md:text-lg lg:text-xl">
-                    <li>{translations.experience.second.descriptionOne}</li>
-                    <li>{translations.experience.second.descriptionTwo}</li>
-                    <li>{translations.experience.second.descriptionThree}</li>
-                </ul>
-            </li>
-            <li class="ms-4">
-                <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-400"></div>
-                <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{translations.experience.first.date}</time>
-                <h3 class="text-lg font-semibold text-white dark:text-white">{translations.experience.first.title}</h3>
-                <ul class="list-disc pl-5 text-base font-normal text-gray-500 dark:text-gray-400 md:text-lg lg:text-xl">
-                    <li>{translations.experience.first.descriptionOne}</li>
-                    <li>{translations.experience.first.descriptionTwo}</li>
-                    <li>{translations.experience.first.descriptionThree}</li>
-                </ul>
-            </li>
-        </ol>
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12 mt-8">
+            <ol class="relative border-s border-gray-200 dark:border-gray-700">
+                <li class="mb-10 ms-4">
+                    <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-400"></div>
+                    <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{translations.experience.third.date}</time>
+                    <h3 class="text-lg font-semibold text-white dark:text-white">{translations.experience.third.title}</h3>
+                    <ul class="list-disc pl-5 text-base font-normal text-gray-500 dark:text-gray-400 md:text-lg lg:text-xl">
+                        <li>{translations.experience.third.descriptionOne}</li>
+                        <li>{translations.experience.third.descriptionTwo}</li>
+                        <li>{translations.experience.third.descriptionThree}</li>
+                    </ul>
+                </li>
+                <li class="mb-10 ms-4">
+                    <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-400"></div>
+                    <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{translations.experience.second.date}</time>
+                    <h3 class="text-lg font-semibold text-white dark:text-white">{translations.experience.second.title}</h3>
+                    <ul class="list-disc pl-5 text-base font-normal text-gray-500 dark:text-gray-400 md:text-lg lg:text-xl">
+                        <li>{translations.experience.second.descriptionOne}</li>
+                        <li>{translations.experience.second.descriptionTwo}</li>
+                        <li>{translations.experience.second.descriptionThree}</li>
+                    </ul>
+                </li>
+                <li class="ms-4">
+                    <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-400"></div>
+                    <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{translations.experience.first.date}</time>
+                    <h3 class="text-lg font-semibold text-white dark:text-white">{translations.experience.first.title}</h3>
+                    <ul class="list-disc pl-5 text-base font-normal text-gray-500 dark:text-gray-400 md:text-lg lg:text-xl">
+                        <li>{translations.experience.first.descriptionOne}</li>
+                        <li>{translations.experience.first.descriptionTwo}</li>
+                        <li>{translations.experience.first.descriptionThree}</li>
+                    </ul>
+                </li>
+            </ol>
+            <ol class="relative border-s border-gray-200 dark:border-gray-700">
+                <li class="mb-10 ms-4">
+                    <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-400"></div>
+                    <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{translations.experience.third.date}</time>
+                    <h3 class="text-lg font-semibold text-white dark:text-white">{translations.experience.third.title}</h3>
+                    <ul class="list-disc pl-5 text-base font-normal text-gray-500 dark:text-gray-400 md:text-lg lg:text-xl">
+                        <li>{translations.experience.third.descriptionOne}</li>
+                        <li>{translations.experience.third.descriptionTwo}</li>
+                        <li>{translations.experience.third.descriptionThree}</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
     </div>
 </section>
