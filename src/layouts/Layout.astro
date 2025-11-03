@@ -84,4 +84,32 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         font-family: 'Raleway', sans-serif;
         font-weight: 600;
     }
+
+	.slider {
+		position: relative;
+		overflow: hidden;
+		width: 75vw;
+	}
+
+	.slide-track {
+		display: flex;
+		width: calc(200px * 7 * 2); /* 7 ítems duplicados */
+	}
+
+	.slide {
+		width: 200px;
+		flex-shrink: 0;
+	}
+
+	.slide-track-frontend {
+		width: calc(200px * 7 * 2);
+	}
+
+	.slide-track-backend {
+		width: calc(200px * 5 * 2);
+	}
+
+	.slide-track-others {
+		width: calc(200px * 9 * 2);
+	}
 </style>
