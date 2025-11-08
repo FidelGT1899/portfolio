@@ -279,10 +279,9 @@ const skillsOthers = [
             {translations.skills.title}
         </h2>
 
-
-        <div class="slider w-[75vw] mx-auto overflow-x-auto overflow-y-hidden touch-pan-x snap-x snap-mandatory scrollbar-hide lg:overflow-hidden">
-            <div class="slide-track slide-track-frontend flex animate-scrollFrontend" >
-                {skillsFrontend.concat(skillsFrontend).map((item) => (
+        <div class="slider w-[75vw] mx-auto overflow-hidden">
+            <div class="slide-track animate-scrollFrontend">
+                {[...skillsFrontend, ...skillsFrontend].map((item, index) => (
                     <div class="slide flex flex-col items-center justify-center w-[200px]">
                         <span class="svg-skill w-[100px] mx-5 cursor-pointer transition-transform duration-500 filter grayscale hover:grayscale-0" set:html={item.svg}></span>
                         <span class="mt-2 text-sm font-medium text-gray-300 dark:text-gray-300">
@@ -293,9 +292,9 @@ const skillsOthers = [
             </div>
         </div>
 
-        <div class="slider w-[75vw] mx-auto overflow-x-auto overflow-y-hidden touch-pan-x snap-x snap-mandatory scrollbar-hide lg:overflow-hidden mt-10 mb-10">
-            <div class="slide-track slide-track-backend flex animate-scrollBackend">
-                {skillsBackend.concat(skillsBackend).map((item) => (
+        <div class="slider w-[75vw] mx-auto overflow-hidden mt-10 mb-10">
+            <div class="slide-track animate-scrollBackend">
+                {[...skillsBackend, ...skillsBackend].map((item, index) => (
                     <div class="slide flex flex-col items-center justify-center w-[200px]">
                         <span class="svg-skill w-[100px] mx-5 cursor-pointer transition-transform duration-500 filter grayscale hover:grayscale-0" set:html={item.svg}></span>
                         <span class="mt-2 text-sm font-medium text-gray-300 dark:text-gray-300">
@@ -306,9 +305,9 @@ const skillsOthers = [
             </div>
         </div>
 
-        <div class="slider w-[75vw] mx-auto overflow-x-auto overflow-y-hidden touch-pan-x snap-x snap-mandatory scrollbar-hide lg:overflow-hidden">
-            <div class="slide-track slide-track-others flex animate-scrollOthers">
-                {skillsOthers.concat(skillsOthers).map((item) => (
+        <div class="slider w-[75vw] mx-auto overflow-hidden">
+            <div class="slide-track animate-scrollOthers">
+                {[...skillsOthers, ...skillsOthers].map((item, index) => (
                     <div class="slide flex flex-col items-center justify-center w-[200px]">
                         <span class="svg-skill w-[100px] mx-5 cursor-pointer transition-transform duration-500 filter grayscale hover:grayscale-0" set:html={item.svg}></span>
                         <span class="mt-2 text-sm font-medium text-gray-300 dark:text-gray-300">

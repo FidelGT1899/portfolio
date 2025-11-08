@@ -95,24 +95,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 	.slide-track {
 		display: flex;
-		width: calc(200px * 7 * 2); /* 7 ítems duplicados */
+		width: max-content;
+		will-change: transform;
 	}
 
 	.slide {
 		width: 200px;
 		flex-shrink: 0;
-	}
-
-	.slide-track-frontend {
-		width: calc(200px * 7 * 2);
-	}
-
-	.slide-track-backend {
-		width: calc(200px * 5 * 2);
-	}
-
-	.slide-track-others {
-		width: calc(200px * 9 * 2);
 	}
 
 	.scrollbar-hide::-webkit-scrollbar {

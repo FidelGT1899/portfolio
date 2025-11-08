@@ -11,15 +11,15 @@ export default {
             keyframes: {
                 scrollFrontend: {
 					"0%": { transform: "translateX(0)" },
-					"100%": { transform: "translateX(calc(-200px * 7))" },
+					"100%": { transform: "translateX(-50%)" },
 				},
 				scrollBackend: {
 					"0%": { transform: "translateX(0)" },
-					"100%": { transform: "translateX(calc(-200px * 5))" },
+					"100%": { transform: "translateX(-50%)" },
 				},
 				scrollOthers: {
 					"0%": { transform: "translateX(0)" },
-					"100%": { transform: "translateX(calc(-200px * 9))" },
+					"100%": { transform: "translateX(-50%)" },
 				},
             },
 			colors: {
