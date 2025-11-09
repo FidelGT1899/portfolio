@@ -4,7 +4,12 @@ import { getLocale } from '../utils/i18nHelpers';
 const { locale, translations } = await getLocale(Astro);
 ---
 
-<section id="contact">
+<section id="contact" 
+    data-translations={JSON.stringify({
+    success: translations.contact.form.successMessage || 'Mensaje enviado...',
+    error: translations.contact.form.errorMessage || 'Hubo un problema...',
+    sending: translations.contact.form.sending || 'Enviando...'})}
+>
     <div class="max-w-screen-xl px-4 py-8 mx-auto lg:px-6 lg:py-24 sm:py-16">
         <h2 class="text-4xl font-extrabold leading-tight pb-3 tracking-tight text-white md:text-5xl sm:text-4xl xl:text-6xl dark:text-white">
             {translations.contact.title}
@@ -12,6 +17,7 @@ const { locale, translations } = await getLocale(Astro);
         <p class="mb-8 lg:mb-16 font-normal text-gray-500 dark:text-gray-400 sm:text-xl">
             {translations.contact.description}
         </p>
+        <div id="form-message" role="alert" aria-live="polite" class="hidden mb-6 p-4 rounded-lg transition-all duration-300"></div>
         <form id="contact-form" class="space-y-8">
             <div>
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-300 dark:text-gray-300">{translations.contact.form.email}</label>
@@ -25,42 +31,107 @@ const { locale, translations } = await getLocale(Astro);
                 <label for="message" class="block mb-2 text-sm font-medium text-gray-300 dark:text-gray-300">{translations.contact.form.message}</label>
                 <textarea id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-700 rounded-lg shadow-sm border border-gray-600 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-light dark:focus:border-primary-light" placeholder={translations.contact.form.messagePlaceholder}></textarea>
             </div>
-            <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary sm:w-fit hover:bg-primary-dark focus:ring-4 focus:outline-none focus:ring-primary dark:bg-primary dark:hover:bg-primary-dark dark:focus:ring-primary-dark transition-all duration-200 ease-in-out">{translations.contact.form.send}</button>
+            <button type="submit" id="submit-btn" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary sm:w-fit hover:bg-primary-dark focus:ring-4 focus:outline-none focus:ring-primary dark:bg-primary dark:hover:bg-primary-dark dark:focus:ring-primary-dark transition-all duration-200 ease-in-out">
+                <span id="btn-text">{translations.contact.form.send}</span>
+                <span id="btn-loading" class="hidden flex items-center gap-2">
+                    <svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span id="loading-text"></span>
+                </span>
+            </button>
         </form>
     </div>
 </section>
 
 <script>
-    const handleFormSubmit = async (event: SubmitEvent) => {
-        event.preventDefault();
-        const form = event.target as HTMLFormElement;
-        const email = (form.elements.namedItem('email') as HTMLInputElement).value;
-        const subject = (form.elements.namedItem('subject') as HTMLInputElement).value;
-        const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value;
+  const section = document.getElementById('contact');
+  const translationsData = section?.dataset.translations;
+  const translations = translationsData ? JSON.parse(translationsData) : {
+    success: 'Mensaje enviado exitosamente',
+    error: 'Error al enviar el mensaje',
+    sending: 'Enviando...'
+  };
+
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const btnText = document.getElementById('btn-text');
+  const btnLoading = document.getElementById('btn-loading');
+  const loadingText = document.getElementById('loading-text');
+  const messageDiv = document.getElementById('form-message');
+
+  function showMessage(type: 'success' | 'error', message: string) {
+    if (!messageDiv) return;  
+    messageDiv.textContent = message;
+    messageDiv.className = `mb-6 p-4 rounded-lg transition-all duration-300 ${
+      type === 'success' 
+        ? 'bg-green-100 text-green-700 border border-green-300 dark:bg-green-900/30 dark:text-green-300 dark:border-green-700' 
+        : 'bg-red-100 text-red-700 border border-red-300 dark:bg-red-900/30 dark:text-red-300 dark:border-red-700'
+    }`;
+    messageDiv.classList.remove('hidden');
     
-        try {
-            const response = await fetch('/api/send-email', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, subject, message }),
-            });
+    if (type === 'success') {
+        setTimeout(() => {
+            messageDiv.classList.add('hidden');
+        }, 3000);
+    }
+  }
+
+  function setButtonLoading(isLoading: boolean) {
+    if (!submitBtn || !btnText || !btnLoading || !loadingText) return;
     
-            const result = await response.json();
-            if (result.success) {
-                alert('Correo enviado exitosamente.');
-                form.reset();
-            } else {
-                alert('Hubo un problema al enviar el correo. Por favor, intenta nuevamente.');
-            }
-        } catch (error) {
-            alert('Hubo un problema al enviar el correo. Por favor, intenta nuevamente.');
-        }
+    submitBtn.disabled = isLoading;
+    
+    if (isLoading) {
+        btnText.classList.add('hidden');
+        btnLoading.classList.remove('hidden');
+        btnLoading.classList.add('flex');
+        loadingText.textContent = translations.sending;
+    } else {
+        btnText.classList.remove('hidden');
+        btnLoading.classList.add('hidden');
+        btnLoading.classList.remove('flex');
+    }
+  }
+
+  async function handleFormSubmit(event: SubmitEvent) {
+    event.preventDefault();
+    
+    messageDiv?.classList.add('hidden');
+    
+    const formData = {
+        email: (form.elements.namedItem('email') as HTMLInputElement).value,
+        subject: (form.elements.namedItem('subject') as HTMLInputElement).value,
+        message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
     };
-    
-    document.addEventListener('DOMContentLoaded', () => {
-        const form = document.getElementById('contact-form');
-        if (form) {
-            form.addEventListener('submit', handleFormSubmit);
-        }
-    });
+
+    setButtonLoading(true);
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        showMessage('success', translations.success);
+        form.reset();
+      } else {
+        showMessage('error', translations.error);
+      }
+    } catch (error) {
+        console.error('Error sending email:', error);
+        showMessage('error', translations.error);
+    } finally {
+        setButtonLoading(false);
+    }
+  }
+
+  form?.addEventListener('submit', handleFormSubmit);
 </script>

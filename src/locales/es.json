@@ -96,7 +96,10 @@
             "subjectPlaceholder": "¿Sobre qué quieres hablar?",
             "message": "Tu mensaje",
             "messagePlaceholder": "Cuéntame más sobre tu proyecto",
-            "send": "Enviar"
+            "send": "Enviar",
+            "sending": "Enviando...",
+            "successMessage": "¡Mensaje enviado exitosamente! Me pondré en contacto contigo pronto.",
+            "errorMessage": "Hubo un problema al enviar el mensaje. Por favor, intenta nuevamente."
         }
     },
     "projects": {
