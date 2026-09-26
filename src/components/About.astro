@@ -1,5 +1,6 @@
 ---
-import FGLogo from '../assets/FG_logo.webp';
+import { Image } from 'astro:assets';
+import FGLogo from '../assets/FG_logo_about.webp';
 import { getLocale } from '../utils/i18nHelpers';
 
 const { locale, translations } = await getLocale(Astro);
@@ -14,8 +15,17 @@ const { locale, translations } = await getLocale(Astro);
                 {translations.about.description}
             </p>
         </div>
-        <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-            <img src={FGLogo.src} alt="Logo">
-        </div>                
+        <div class="hidden items-center lg:mt-0 lg:col-span-5 lg:flex">
+            <Image
+                src={FGLogo}
+                alt="Logo"
+                widths={[400, 550, 800, 1200]}
+                width={1200}
+                sizes="(min-width: 1280px) 520px, (min-width: 1024px) 415px, 100vw"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-auto"
+            />
+        </div>
     </div>
 </section>

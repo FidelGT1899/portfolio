@@ -1,5 +1,4 @@
 ---
-import FGLogo from '../assets/FG_logo.png';
 import { getLocale } from '../utils/i18nHelpers';
 
 const { locale, translations } = await getLocale(Astro);
@@ -8,8 +7,7 @@ const { locale, translations } = await getLocale(Astro);
 <header id="header" class="fixed top-0 left-0 z-50 w-full shadow-md bg-opacity-80 backdrop-blur-lg dark:shadow-none">
     <nav class="border-gray-200 text-white dark:text-white" role="navigation" aria-label="Main Navigation">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <a rel="noopener noreferrer" href="https://fidel-gt-dev.netlify.app/" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src={FGLogo.src} class="h-6 sm:h-5 relative" alt="Logo de Fidel García Távara" />
+            <a rel="noopener noreferrer" href="https://fidel-gt-dev.netlify.app/" class="flex items-center">
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">EFGT</span>
             </a>
             <button 
