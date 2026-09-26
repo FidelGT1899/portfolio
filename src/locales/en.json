@@ -99,7 +99,12 @@
             "send": "Send",
             "sending": "Sending...",
             "successMessage": "Message sent successfully! I'll get back to you soon.",
-            "errorMessage": "There was a problem sending the message. Please try again."
+            "errorMessage": "There was a problem sending the message. Please try again.",
+            "rateLimited": "Too many messages sent. Please try again in {seconds}s.",
+            "timeout": "The request took too long. Check your connection and try again.",
+            "missingFields": "Please fill in your email, subject and message.",
+            "invalidEmail": "Please enter a valid email address.",
+            "tooLong": "One of the fields is too long. Please shorten it."
         }
     },
     "projects": {

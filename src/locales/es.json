@@ -99,7 +99,12 @@
             "send": "Enviar",
             "sending": "Enviando...",
             "successMessage": "¡Mensaje enviado exitosamente! Me pondré en contacto contigo pronto.",
-            "errorMessage": "Hubo un problema al enviar el mensaje. Por favor, intenta nuevamente."
+            "errorMessage": "Hubo un problema al enviar el mensaje. Por favor, intenta nuevamente.",
+            "rateLimited": "Demasiados envíos. Inténtalo de nuevo en {seconds} s.",
+            "timeout": "La solicitud tardó demasiado. Revisa tu conexión e inténtalo de nuevo.",
+            "missingFields": "Completa tu correo, asunto y mensaje.",
+            "invalidEmail": "Introduce un correo electrónico válido.",
+            "tooLong": "Uno de los campos es demasiado largo. Acórtalo."
         }
     },
     "projects": {

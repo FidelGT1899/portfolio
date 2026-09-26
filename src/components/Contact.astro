@@ -1,14 +1,22 @@
 ---
 import { getLocale } from '../utils/i18nHelpers';
+import { CONTACT_LIMITS } from '../utils/contact';
 
 const { locale, translations } = await getLocale(Astro);
+const form = translations.contact.form;
 ---
 
 <section id="contact" 
     data-translations={JSON.stringify({
-    success: translations.contact.form.successMessage || 'Mensaje enviado...',
-    error: translations.contact.form.errorMessage || 'Hubo un problema...',
-    sending: translations.contact.form.sending || 'Enviando...'})}
+    success: form.successMessage || 'Mensaje enviado...',
+    error: form.errorMessage || 'Hubo un problema...',
+    sending: form.sending || 'Enviando...',
+    timeout: form.timeout || 'La solicitud tardó demasiado...',
+    rateLimited: form.rateLimited || 'Demasiados envíos. Inténtalo en {seconds} s.',
+    missingFields: form.missingFields || 'Completa todos los campos...',
+    invalidEmail: form.invalidEmail || 'Introduce un correo válido...',
+    tooLong: form.tooLong || 'Uno de los campos es demasiado largo...',
+    invalidContentType: form.errorMessage || 'Hubo un problema...'})}
 >
     <div class="max-w-screen-xl px-4 py-8 mx-auto lg:px-6 lg:py-24 sm:py-16">
         <h2 class="text-4xl font-extrabold leading-tight pb-3 tracking-tight text-white md:text-5xl sm:text-4xl xl:text-6xl dark:text-white">
@@ -20,20 +28,24 @@ const { locale, translations } = await getLocale(Astro);
         <div id="form-message" role="alert" aria-live="polite" class="hidden mb-6 p-4 rounded-lg transition-all duration-300"></div>
         <form id="contact-form" class="space-y-8">
             <div>
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-300 dark:text-gray-300">{translations.contact.form.email}</label>
-                <input type="email" id="email" class="shadow-sm bg-gray-700 border border-gray-600 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-light dark:focus:border-primary-light dark:shadow-sm-light" placeholder={translations.contact.form.emailPlaceholder} required>
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-300 dark:text-gray-300">{form.email}</label>
+                <input type="email" id="email" name="email" autocomplete="email" maxlength={CONTACT_LIMITS.email} class="shadow-sm bg-gray-700 border border-gray-600 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-light dark:focus:border-primary-light dark:shadow-sm-light" placeholder={form.emailPlaceholder} required>
             </div>
             <div>
-                <label for="subject" class="block mb-2 text-sm font-medium text-gray-300 dark:text-gray-300">{translations.contact.form.subject}</label>
-                <input type="text" id="subject" class="block p-3 w-full text-sm text-gray-900 bg-gray-700 rounded-lg border border-gray-600 shadow-sm focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-light dark:focus:border-primary-light dark:shadow-sm-light" placeholder={translations.contact.form.subjectPlaceholder} required>
+                <label for="subject" class="block mb-2 text-sm font-medium text-gray-300 dark:text-gray-300">{form.subject}</label>
+                <input type="text" id="subject" name="subject" maxlength={CONTACT_LIMITS.subject} class="block p-3 w-full text-sm text-gray-900 bg-gray-700 rounded-lg border border-gray-600 shadow-sm focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-light dark:focus:border-primary-light dark:shadow-sm-light" placeholder={form.subjectPlaceholder} required>
             </div>
             <div class="sm:col-span-2">
-                <label for="message" class="block mb-2 text-sm font-medium text-gray-300 dark:text-gray-300">{translations.contact.form.message}</label>
-                <textarea id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-700 rounded-lg shadow-sm border border-gray-600 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-light dark:focus:border-primary-light" placeholder={translations.contact.form.messagePlaceholder}></textarea>
+                <label for="message" class="block mb-2 text-sm font-medium text-gray-300 dark:text-gray-300">{form.message}</label>
+                <textarea id="message" name="message" rows="6" maxlength={CONTACT_LIMITS.message} class="block p-2.5 w-full text-sm text-gray-900 bg-gray-700 rounded-lg shadow-sm border border-gray-600 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-light dark:focus:border-primary-light" placeholder={form.messagePlaceholder} required></textarea>
             </div>
-            <button type="submit" id="submit-btn" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary sm:w-fit hover:bg-primary-dark focus:ring-4 focus:outline-none focus:ring-primary dark:bg-primary dark:hover:bg-primary-dark dark:focus:ring-primary-dark transition-all duration-200 ease-in-out">
-                <span id="btn-text">{translations.contact.form.send}</span>
-                <span id="btn-loading" class="hidden flex items-center gap-2">
+            <div class="hidden" aria-hidden="true">
+                <label for="website">Website</label>
+                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+            <button type="submit" id="submit-btn" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary sm:w-fit hover:bg-primary-dark focus:ring-4 focus:outline-none focus:ring-primary disabled:cursor-not-allowed disabled:opacity-60 dark:bg-primary dark:hover:bg-primary-dark dark:focus:ring-primary-dark transition-all duration-200 ease-in-out">
+                <span id="btn-text">{form.send}</span>
+                <span id="btn-loading" class="hidden flex items-center gap-2" aria-hidden="true">
                     <svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -46,92 +58,194 @@ const { locale, translations } = await getLocale(Astro);
 </section>
 
 <script>
-  const section = document.getElementById('contact');
-  const translationsData = section?.dataset.translations;
-  const translations = translationsData ? JSON.parse(translationsData) : {
+  type MessageKind = 'success' | 'error';
+  type TranslationKey =
+    | 'success'
+    | 'error'
+    | 'sending'
+    | 'timeout'
+    | 'rateLimited'
+    | 'missingFields'
+    | 'invalidEmail'
+    | 'tooLong'
+    | 'invalidContentType';
+
+  const REQUEST_TIMEOUT_MS = 15000;
+  const ENDPOINT = '/api/send-email';
+
+  const DEFAULT_TRANSLATIONS: Record<TranslationKey, string> = {
     success: 'Mensaje enviado exitosamente',
     error: 'Error al enviar el mensaje',
-    sending: 'Enviando...'
+    sending: 'Enviando...',
+    timeout: 'La solicitud tardó demasiado. Revisa tu conexión e inténtalo de nuevo.',
+    rateLimited: 'Demasiados envíos. Inténtalo de nuevo en {seconds} s.',
+    missingFields: 'Completa tu correo, asunto y mensaje.',
+    invalidEmail: 'Introduce un correo electrónico válido.',
+    tooLong: 'Uno de los campos es demasiado largo. Acórtalo.',
+    invalidContentType: 'Error al enviar el mensaje',
   };
 
-  const form = document.getElementById('contact-form') as HTMLFormElement;
-  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
-  const btnText = document.getElementById('btn-text');
-  const btnLoading = document.getElementById('btn-loading');
-  const loadingText = document.getElementById('loading-text');
-  const messageDiv = document.getElementById('form-message');
+  function readTranslations(): Record<TranslationKey, string> {
+    const raw = document.getElementById('contact')?.dataset.translations;
+    if (!raw) return DEFAULT_TRANSLATIONS;
 
-  function showMessage(type: 'success' | 'error', message: string) {
-    if (!messageDiv) return;  
-    messageDiv.textContent = message;
-    messageDiv.className = `mb-6 p-4 rounded-lg transition-all duration-300 ${
-      type === 'success' 
-        ? 'bg-green-100 text-green-700 border border-green-300 dark:bg-green-900/30 dark:text-green-300 dark:border-green-700' 
-        : 'bg-red-100 text-red-700 border border-red-300 dark:bg-red-900/30 dark:text-red-300 dark:border-red-700'
-    }`;
-    messageDiv.classList.remove('hidden');
-    
-    if (type === 'success') {
-        setTimeout(() => {
-            messageDiv.classList.add('hidden');
-        }, 3000);
+    try {
+      return { ...DEFAULT_TRANSLATIONS, ...JSON.parse(raw) };
+    } catch {
+      return DEFAULT_TRANSLATIONS;
     }
   }
 
-  function setButtonLoading(isLoading: boolean) {
-    if (!submitBtn || !btnText || !btnLoading || !loadingText) return;
-    
-    submitBtn.disabled = isLoading;
-    
-    if (isLoading) {
+  function initContactForm() {
+    const form = document.getElementById('contact-form') as HTMLFormElement | null;
+    if (!form) return;
+
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+    const btnText = document.getElementById('btn-text');
+    const btnLoading = document.getElementById('btn-loading');
+    const loadingText = document.getElementById('loading-text');
+    const messageDiv = document.getElementById('form-message');
+
+    const translations = readTranslations();
+    let isSubmitting = false;
+    let cooldownTimer: number | undefined;
+
+    function showMessage(type: MessageKind, message: string) {
+      if (!messageDiv) return;
+
+      messageDiv.textContent = message;
+      messageDiv.className = `mb-6 p-4 rounded-lg transition-all duration-300 ${
+        type === 'success'
+          ? 'bg-green-100 text-green-700 border border-green-300 dark:bg-green-900/30 dark:text-green-300 dark:border-green-700'
+          : 'bg-red-100 text-red-700 border border-red-300 dark:bg-red-900/30 dark:text-red-300 dark:border-red-700'
+      }`;
+      messageDiv.classList.remove('hidden');
+
+      if (type === 'success') {
+        setTimeout(() => messageDiv?.classList.add('hidden'), 5000);
+      }
+    }
+
+    function hideMessage() {
+      messageDiv?.classList.add('hidden');
+    }
+
+    function setButtonLoading(isLoading: boolean) {
+      if (!submitBtn || !btnText || !btnLoading || !loadingText) return;
+
+      submitBtn.disabled = isLoading;
+      submitBtn.setAttribute('aria-busy', String(isLoading));
+
+      if (isLoading) {
         btnText.classList.add('hidden');
         btnLoading.classList.remove('hidden');
         btnLoading.classList.add('flex');
         loadingText.textContent = translations.sending;
-    } else {
+      } else {
         btnText.classList.remove('hidden');
         btnLoading.classList.add('hidden');
         btnLoading.classList.remove('flex');
+      }
     }
-  }
 
-  async function handleFormSubmit(event: SubmitEvent) {
-    event.preventDefault();
-    
-    messageDiv?.classList.add('hidden');
-    
-    const formData = {
-        email: (form.elements.namedItem('email') as HTMLInputElement).value,
-        subject: (form.elements.namedItem('subject') as HTMLInputElement).value,
-        message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
-    };
+    function startCooldown(seconds: number) {
+      if (!submitBtn) return;
 
-    setButtonLoading(true);
+      window.clearTimeout(cooldownTimer);
+      submitBtn.disabled = true;
 
-    try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      if (seconds > 0) {
+        cooldownTimer = window.setTimeout(() => {
+          if (submitBtn) submitBtn.disabled = false;
+        }, seconds * 1000);
+      }
+    }
 
-      const result = await response.json();
+    function resolveErrorMessage(code?: string, retryAfter?: number): string {
+      switch (code) {
+        case 'RATE_LIMITED':
+          return translations.rateLimited.replace('{seconds}', String(retryAfter ?? 60));
+        case 'MISSING_FIELDS':
+          return translations.missingFields;
+        case 'INVALID_EMAIL':
+          return translations.invalidEmail;
+        case 'FIELD_TOO_LONG':
+          return translations.tooLong;
+        case 'INVALID_CONTENT_TYPE':
+          return translations.invalidContentType;
+        default:
+          return translations.error;
+      }
+    }
 
-      if (result.success) {
+    function readField(id: string): string {
+      const field = form.elements.namedItem(id);
+      return field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement
+        ? field.value
+        : '';
+    }
+
+    async function handleFormSubmit(event: SubmitEvent) {
+      event.preventDefault();
+      if (isSubmitting) return;
+
+      const formData = {
+        email: readField('email'),
+        subject: readField('subject'),
+        message: readField('message'),
+        website: readField('website'),
+      };
+
+      isSubmitting = true;
+      hideMessage();
+      setButtonLoading(true);
+
+      const controller = new AbortController();
+      const timeoutId = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+
+      try {
+        const response = await fetch(ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+          signal: controller.signal,
+        });
+
+        const result = await response.json().catch(() => null);
+        const code = result?.code;
+
+        if (code === 'RATE_LIMITED' || response.status === 429) {
+          const headerRetryAfter = Number(response.headers.get('Retry-After'));
+          const retryAfter = Number(result?.retryAfter) || headerRetryAfter || 60;
+
+          showMessage('error', resolveErrorMessage('RATE_LIMITED', retryAfter));
+          startCooldown(retryAfter);
+          return;
+        }
+
+        if (!response.ok || !result?.success) {
+          showMessage('error', resolveErrorMessage(code));
+          return;
+        }
+
         showMessage('success', translations.success);
         form.reset();
-      } else {
-        showMessage('error', translations.error);
-      }
-    } catch (error) {
-        console.error('Error sending email:', error);
-        showMessage('error', translations.error);
-    } finally {
+      } catch (error) {
+        if (error instanceof Error && error.name === 'AbortError') {
+          showMessage('error', translations.timeout);
+        } else {
+          console.error('Error sending email:', error);
+          showMessage('error', translations.error);
+        }
+      } finally {
+        window.clearTimeout(timeoutId);
         setButtonLoading(false);
+        isSubmitting = false;
+      }
     }
+
+    form.addEventListener('submit', handleFormSubmit);
   }
 
-  form?.addEventListener('submit', handleFormSubmit);
+  initContactForm();
 </script>
